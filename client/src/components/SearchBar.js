@@ -44,7 +44,7 @@ class SearchBar extends React.Component {
 				<div className='input-field'>
 					<i className='material-icons prefix'>search</i>
 					<input
-						placeholder='Enter Artist og Song'
+						placeholder='Enter Artist and/or Song'
 						type='text'
 						id='search'
 						maxLength='100'

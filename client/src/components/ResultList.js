@@ -6,7 +6,7 @@ const ResultList = props => {
 	return (
 		<>
 			{props.songs.hits ? (
-				<ul className='collection' style={{ border: 'none' }}>
+				<ul className='collection' style={{ border: 'none', marginTop: '7%' }}>
 					{props.songs.hits.map(hit => {
 						return <Song key={hit.result.id} song={hit.result} />
 					})}

@@ -11,11 +11,7 @@ const Song = props => {
 	}
 
 	return (
-		<li
-			onClick={handleClick}
-			className='collection-item avatar hoverable'
-			style={{ maxHeight: '50px' }}
-		>
+		<li onClick={handleClick} className='collection-item avatar hoverable'>
 			<img
 				src={props.song.header_image_thumbnail_url}
 				alt=''
@@ -23,6 +19,9 @@ const Song = props => {
 			/>
 			<span className='title'>{props.song.title_with_featured}</span>
 			<p>{props.song.primary_artist.name}</p>
+			<div className='secondary-content black-text'>
+				<i className='material-icons'>g_translate</i>
+			</div>
 		</li>
 	)
 }

@@ -61,7 +61,7 @@ const LyricsPage = props => {
 			{console.log(props.song)}
 			<div className='card z-depth-0'>
 				<div className='row'>
-					<div className='col s6'>
+					<div className='col s12 m6'>
 						<div className='card-content'>
 							{props.lyrics.lyrics ? (
 								<>
@@ -77,7 +77,7 @@ const LyricsPage = props => {
 							)}
 						</div>
 					</div>
-					<div className='col s6'>
+					<div className='col s12 m6'>
 						<div className='card-image'>
 							<img
 								src={props.song.header_image_url}
