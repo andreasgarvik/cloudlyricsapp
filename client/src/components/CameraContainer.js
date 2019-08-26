@@ -13,6 +13,7 @@ const CameraContainer = props => {
 	return (
 		<div style={{ marginTop: '2%' }}>
 			<Camera
+				isImageMirror={false}
 				isSilentMode={true}
 				idealFacingMode={FACING_MODES.ENVIRONMENT}
 				onTakePhoto={dataUri => {
