@@ -1,5 +1,5 @@
 import React from 'react'
-import Camera from 'react-html5-camera-photo'
+import Camera, { FACING_MODES } from 'react-html5-camera-photo'
 import 'react-html5-camera-photo/build/css/index.css'
 import { connect } from 'react-redux'
 import * as actions from '../store/actions'
@@ -14,6 +14,7 @@ const CameraContainer = props => {
 		<div style={{ marginTop: '2%' }}>
 			<Camera
 				isSilentMode={true}
+				idealFacingMode={FACING_MODES.ENVIRONMENT}
 				onTakePhoto={dataUri => {
 					handlePhoto(dataUri)
 				}}
