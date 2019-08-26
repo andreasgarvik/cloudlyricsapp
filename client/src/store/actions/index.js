@@ -2,13 +2,13 @@ import axios from 'axios'
 import {
 	NEW_SEARCH,
 	LOG_IN,
-	TOP_TRACKS,
 	GENIUS_SEARCH,
 	GENIUS_LYRICS,
 	GOOGLE_LANGUAGES,
 	SELECT_LANGUAGE,
 	SELECT_SONG,
-	NEW_SESSION
+	NEW_SESSION,
+	IMAGE_SEARCH
 } from './types'
 
 export const newSpotifySearch = q => async dispatch => {
@@ -33,11 +33,16 @@ export const loginSpotify = () => async dispatch => {
 	})
 }
 
-export const topTracksSpotify = () => async dispatch => {
-	const res = await axios.get('/api/spotify/top/tracks')
+export const imageSearch = image => async dispatch => {
+	const res = await axios.post('/api/google/image', {
+		data: {
+			image,
+			name: Date.now()
+		}
+	})
 
 	dispatch({
-		type: TOP_TRACKS,
+		type: IMAGE_SEARCH,
 		payload: res.data
 	})
 }

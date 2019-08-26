@@ -1,8 +1,8 @@
-import { NEW_SEARCH } from '../actions/types'
+import { IMAGE_SEARCH } from '../actions/types'
 
 export default (state = {}, action) => {
 	switch (action.type) {
-		case NEW_SEARCH:
+		case IMAGE_SEARCH:
 			return action.payload
 		default:
 			return state

@@ -2,7 +2,7 @@ import React from 'react'
 
 const Footer = () => {
 	return (
-		<footer className='page-footer cyan lighten-3'>
+		<footer className='page-footer blue lighten-1'>
 			<div className='container'>
 				<div className='row right'>
 					Translation done by Google Translation API

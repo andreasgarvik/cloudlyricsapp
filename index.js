@@ -9,14 +9,13 @@ const helmet = require('helmet')
 const app = express()
 app.use(cors())
 app.use(helmet())
-app.use(bodyParser.json())
 app.use(logger('tiny'))
+app.use(bodyParser.json({ limit: '10mb', extended: true }))
+app.use(bodyParser.urlencoded({ limit: '10mb', extended: true }))
 
 // Routes
-const spotify = require('./routes/spotify')
 const genius = require('./routes/genius')
 const google = require('./routes/google')
-app.use('/api/spotify', spotify)
 app.use('/api/genius', genius)
 app.use('/api/google', google)
 
@@ -30,5 +29,5 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 // Starting server
-const PORT = process.env.PORT || 5000
+const PORT = process.env.PORT || 8080
 app.listen(PORT)
