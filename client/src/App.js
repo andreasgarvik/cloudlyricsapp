@@ -3,6 +3,7 @@ import { Router, Switch, Route } from 'react-router-dom'
 import ScrollToTop from './/ScrollToTop'
 import Navbar from './components/Navbar'
 import history from './history'
+import { Redirect } from 'react-router-dom'
 import HomeScreen from './components/Homescreen'
 import LyricsPage from './components/LyricsPage'
 import Footer from './components/Footer'
@@ -18,6 +19,7 @@ const App = () => {
 							<Switch>
 								<Route exact path='/' component={HomeScreen} />
 								<Route path='/lyrics' component={LyricsPage} />
+								<Redirect to='/' />
 							</Switch>
 						</div>
 					</div>
