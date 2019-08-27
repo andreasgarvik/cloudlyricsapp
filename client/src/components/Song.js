@@ -13,7 +13,7 @@ const Song = props => {
 	return (
 		<li onClick={handleClick} className='collection-item avatar hoverable'>
 			<img
-				src={props.song.header_image_thumbnail_url}
+				src={props.song.song_art_image_thumbnail_url}
 				alt=''
 				className='circle'
 			/>

@@ -19,9 +19,15 @@ const LyricsPage = props => {
 						<div className='col s12 m6' style={{ marginTop: '3.5%' }}>
 							<div className='card-image'>
 								<img
-									src={props.song.header_image_url}
+									src={props.song.song_art_image_url}
 									alt=''
-									className='circle responsive-img'
+									className='responsive-img'
+								/>
+								<img
+									style={{ marginTop: '10%' }}
+									src={props.song.primary_artist.image_url}
+									alt=''
+									className='responsive-img'
 								/>
 							</div>
 						</div>
