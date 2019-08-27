@@ -4,7 +4,7 @@ import * as actions from '../store/actions'
 import M from 'materialize-css'
 
 class LanguageSelector extends React.Component {
-	state = { language: 'af' }
+	state = { language: 'en' }
 
 	componentDidMount = () => {
 		this.props.getLanguages()
@@ -27,6 +27,13 @@ class LanguageSelector extends React.Component {
 				<select onChange={this.handleSelect} id='language'>
 					{this.props.google.languages
 						? this.props.google.languages.map(language => {
+								if (language.code === 'en') {
+									return (
+										<option key={language.code} value={language.code} selected>
+											{language.name}
+										</option>
+									)
+								}
 								return (
 									<option key={language.code} value={language.code}>
 										{language.name}

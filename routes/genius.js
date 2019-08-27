@@ -16,6 +16,7 @@ router.get('/lyrics', async (req, res) => {
 		fetchLyrics: true
 	})
 	if (req.query.language === 'en') {
+		console.log('here')
 		res.send(song)
 	} else {
 		const lyrics = await GoogleTranslate(song.lyrics, req.query.language)

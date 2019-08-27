@@ -19,13 +19,15 @@ router.get('/languages', async (req, res) => {
 
 router.post('/image', async (req, res) => {
 	const base64Image = req.body.data.image.split(';base64,').pop()
-	await createFile(`${req.body.data.name}.png`, base64Image, {
-		encoding: 'base64'
-	})
-	const [result] = await client.textDetection(`${req.body.data.name}.png`)
-	await deleteFile(`${req.body.data.name}.png`)
-	const response = await genius(result.fullTextAnnotation.text.slice(0, 50))
-	res.send(response.data.response)
+	const image = Buffer.from(base64Image, 'base64')
+	const [result] = await client.textDetection(image)
+	if (!result.fullTextAnnotation) {
+		res.send({ error: 'Did not find any text in the image. Try again!' })
+	} else {
+		console.log(result.fullTextAnnotation.text.slice(0, 50))
+		const response = await genius(result.fullTextAnnotation.text.slice(0, 50))
+		res.send(response.data.response)
+	}
 })
 
 module.exports = router

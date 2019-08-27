@@ -4,9 +4,10 @@ import * as actions from '../store/actions'
 import LanguageSelector from './LanguageSelector'
 import CameraContainer from './CameraContainer'
 import M from 'materialize-css'
+import Loader from './Loader'
 
 class SearchBar extends React.Component {
-	state = { search: '', camera: false }
+	state = { search: '', camera: false, loader: false }
 
 	componentDidMount = () => {
 		this.props.flushStore()
@@ -21,7 +22,7 @@ class SearchBar extends React.Component {
 
 	handleSubmit = e => {
 		e.preventDefault()
-		this.setState({ camera: false })
+		this.setState({ camera: false, loader: true })
 		this.props.newGeniusSearch(this.state.search)
 	}
 
@@ -66,8 +67,15 @@ class SearchBar extends React.Component {
 				</button>
 				{this.state.camera ? (
 					<CameraContainer
-						pictureTaken={() => this.setState({ camera: false, search: '' })}
+						pictureTaken={() =>
+							this.setState({ camera: false, search: '', loader: true })
+						}
 					/>
+				) : null}
+				{this.state.loader &&
+				!this.props.search.hits &&
+				!this.props.search.error ? (
+					<Loader />
 				) : null}
 			</>
 		)

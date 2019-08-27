@@ -5,13 +5,17 @@ import Song from './Song'
 const ResultList = props => {
 	return (
 		<>
-			{props.songs.hits ? (
-				<ul className='collection' style={{ border: 'none' }}>
-					{props.songs.hits.map(hit => {
-						return <Song key={hit.result.id} song={hit.result} />
-					})}
-				</ul>
-			) : null}
+			{!props.songs.error ? (
+				props.songs.hits ? (
+					<ul className='collection' style={{ border: 'none' }}>
+						{props.songs.hits.map(hit => {
+							return <Song key={hit.result.id} song={hit.result} />
+						})}
+					</ul>
+				) : null
+			) : (
+				props.songs.error
+			)}
 		</>
 	)
 }
