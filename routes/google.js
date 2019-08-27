@@ -24,7 +24,6 @@ router.post('/image', async (req, res) => {
 	if (!result.fullTextAnnotation) {
 		res.send({ error: 'Did not find any text in the image. Try again!' })
 	} else {
-		console.log(result.fullTextAnnotation.text.slice(0, 50))
 		const response = await genius(result.fullTextAnnotation.text.slice(0, 50))
 		res.send(response.data.response)
 	}
