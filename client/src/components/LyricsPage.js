@@ -94,7 +94,7 @@ const LyricsPage = props => {
 						<div>
 							{props.song.full_title}
 							<a className='right' href={props.song.url}>
-								Link to GENUIS
+								GENUIS
 							</a>
 						</div>
 					</div>

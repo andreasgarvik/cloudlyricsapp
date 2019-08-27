@@ -4,10 +4,10 @@ const Footer = () => {
 	return (
 		<footer className='page-footer blue lighten-1'>
 			<div className='container'>
-				<div className='row right'>
-					Translation done by Google Translation API
+				<div className='row'>
+					<div className='col s6'>Lyrics by GENIUS</div>
+					<div className='col s6 right-align'>Translation by Google</div>
 				</div>
-				<div className='row'>Lyrics provided by GENIUS</div>
 			</div>
 			<div className='footer-copyright'>
 				<div className='container'>
