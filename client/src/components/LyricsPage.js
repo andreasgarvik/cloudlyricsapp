@@ -58,7 +58,6 @@ const LyricsPage = props => {
 
 	return (
 		<div className='container' style={{ marginTop: '2%' }}>
-			{console.log(props.song)}
 			<div className='card z-depth-0'>
 				<div className='row'>
 					<div className='col s12 m6'>

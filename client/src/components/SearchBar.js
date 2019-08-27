@@ -1,19 +1,15 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import * as actions from '../store/actions'
+import LanguageSelector from './LanguageSelector'
 import CameraContainer from './CameraContainer'
 import M from 'materialize-css'
 
 class SearchBar extends React.Component {
-	state = { search: '', language: 'af', camera: false }
+	state = { search: '', camera: false }
 
 	componentDidMount = () => {
 		this.props.flushStore()
-		this.props.getLanguages()
-		M.AutoInit()
-	}
-
-	componentDidUpdate = () => {
 		M.AutoInit()
 	}
 
@@ -23,17 +19,10 @@ class SearchBar extends React.Component {
 		})
 	}
 
-	handleSelect = e => {
-		this.props.selectLanguage(e.target.value)
-		this.setState({
-			[e.target.id]: e.target.value
-		})
-	}
 	handleSubmit = e => {
 		e.preventDefault()
 		this.setState({ camera: false })
 		this.props.newGeniusSearch(this.state.search)
-		this.props.selectLanguage(this.state.language)
 	}
 
 	showCamera = () => {
@@ -45,10 +34,11 @@ class SearchBar extends React.Component {
 	render() {
 		return (
 			<>
+				<LanguageSelector />
 				<form
 					onSubmit={this.handleSubmit}
 					className='white'
-					style={{ marginTop: '5%' }}
+					style={{ marginTop: '2%' }}
 				>
 					<div className='input-field'>
 						<i className='material-icons prefix'>search</i>
@@ -56,33 +46,22 @@ class SearchBar extends React.Component {
 							type='text'
 							id='search'
 							maxLength='100'
+							placeholder='Enter Artist, Song or part of the lyrics'
 							onChange={this.handleChange}
 						/>
-						<label htmlFor='search'>Enter Artist and/or Song</label>
-					</div>
-					<div className='input-field'>
-						<i className='material-icons prefix'>flag</i>
-						<select onChange={this.handleSelect} id='language'>
-							{this.props.google.languages
-								? this.props.google.languages.map(language => {
-										return (
-											<option key={language.code} value={language.code}>
-												{language.name}
-											</option>
-										)
-								  })
-								: null}
-						</select>
 					</div>
 					<button
-						className={`right btn grey z-depth-0 ${
+						className={`right btn grey z-depth-0 btn-floating btn-large ${
 							!this.state.search ? 'disabled' : ''
 						}`}
 					>
 						<i className='material-icons'>search</i>
 					</button>
 				</form>
-				<button className='btn grey z-depth-0' onClick={this.showCamera}>
+				<button
+					className='btn grey z-depth-0 btn-floating btn-large'
+					onClick={this.showCamera}
+				>
 					<i className='material-icons'>camera_alt</i>
 				</button>
 				{this.state.camera ? (
@@ -95,8 +74,8 @@ class SearchBar extends React.Component {
 	}
 }
 
-const mapStateToProps = ({ spotify, auth, genius, google, search }) => {
-	return { spotify, auth, genius, google, search }
+const mapStateToProps = ({ genius, search }) => {
+	return { genius, search }
 }
 
 export default connect(

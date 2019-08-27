@@ -1,5 +1,3 @@
-export const NEW_SEARCH = 'NEW_SEARCH'
-export const LOG_IN = 'LOG_IN'
 export const GENIUS_SEARCH = 'GENIUS_SEARCH'
 export const GENIUS_LYRICS = 'GENIUS_LYRICS'
 export const GOOGLE_LANGUAGES = 'GOOGLE_LANGUAGES'

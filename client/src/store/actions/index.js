@@ -1,7 +1,5 @@
 import axios from 'axios'
 import {
-	NEW_SEARCH,
-	LOG_IN,
 	GENIUS_SEARCH,
 	GENIUS_LYRICS,
 	GOOGLE_LANGUAGES,
@@ -10,28 +8,6 @@ import {
 	NEW_SESSION,
 	IMAGE_SEARCH
 } from './types'
-
-export const newSpotifySearch = q => async dispatch => {
-	const res = await axios.get('/api/spotify/search/artist', {
-		params: {
-			q
-		}
-	})
-
-	dispatch({
-		type: NEW_SEARCH,
-		payload: res.data
-	})
-}
-
-export const loginSpotify = () => async dispatch => {
-	const res = await axios.get('/api/spotify/login')
-
-	dispatch({
-		type: LOG_IN,
-		payload: res.data
-	})
-}
 
 export const imageSearch = image => async dispatch => {
 	const res = await axios.post('/api/google/image', {

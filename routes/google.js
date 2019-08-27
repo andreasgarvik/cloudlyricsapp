@@ -22,9 +22,9 @@ router.post('/image', async (req, res) => {
 	await createFile(`${req.body.data.name}.png`, base64Image, {
 		encoding: 'base64'
 	})
-	const [result] = await client.webDetection(`${req.body.data.name}.png`)
+	const [result] = await client.textDetection(`${req.body.data.name}.png`)
 	await deleteFile(`${req.body.data.name}.png`)
-	const response = await genius(result.webDetection.webEntities[0].description)
+	const response = await genius(result.fullTextAnnotation.text.slice(0, 50))
 	res.send(response.data.response)
 })
 
