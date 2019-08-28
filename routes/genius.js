@@ -15,12 +15,9 @@ router.get('/lyrics', async (req, res) => {
 	const song = await lyricist.song(req.query.id, {
 		fetchLyrics: true
 	})
-	if (req.query.language === 'en') {
-		res.send(song)
-	} else {
-		const lyrics = await GoogleTranslate(song.lyrics, req.query.language)
-		res.send({ lyrics })
-	}
+
+	const lyrics = await GoogleTranslate(song.lyrics, req.query.language)
+	res.send({ lyrics })
 })
 
 module.exports = router
