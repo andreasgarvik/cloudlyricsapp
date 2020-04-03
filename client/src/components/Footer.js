@@ -14,7 +14,7 @@ const Footer = () => {
 					Created by Andreas Garvik
 					<a
 						className='grey-text text-lighten-4 right'
-						href='https://github.com/andreasgarvik'
+						href='https://github.com/andreasgarvik/cloudlyricsapp'
 					>
 						Github
 					</a>
