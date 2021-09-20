@@ -12,8 +12,13 @@ router.get('/search', async (req, res) => {
 })
 
 router.get('/lyrics', async (req, res) => {
-	const song = await lyricist.song(req.query.id, { fetchLyrics: true })
-	const lyrics = await GoogleTranslate(song.lyrics, req.query.language)
+  let lyrics = ''
+  while(!lyrics) {
+		const song = await lyricist.song(req.query.id, { fetchLyrics: true })
+    lyrics = song.lyrics
+	}
+
+	lyrics = await GoogleTranslate(lyrics, req.query.language)
 	res.send({ lyrics })
 })
 
