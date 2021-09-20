@@ -1,15 +1,13 @@
-const { Translate } = require('@google-cloud/translate')
+const { Translate } = require('@google-cloud/translate').v2
 const vision = require('@google-cloud/vision')
 const genius = require('../services/genius')
+const keys = require('../config/keys')
 const router = require('express').Router()
-const axios = require('axios')
-const fs = require('fs')
-const util = require('util')
 
-const createFile = util.promisify(fs.writeFile)
-const deleteFile = util.promisify(fs.unlink)
+const translate = new Translate({
+	projectId: keys.GOOGLE_PROJECT_ID
+})
 
-const translate = new Translate()
 const client = new vision.ImageAnnotatorClient()
 
 router.get('/languages', async (req, res) => {

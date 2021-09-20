@@ -1,4 +1,4 @@
-const { Translate } = require('@google-cloud/translate')
+const { Translate } = require('@google-cloud/translate').v2;
 const keys = require('../config/keys')
 
 const GoogleTranslate = async (song, language) => {
